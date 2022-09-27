@@ -1,5 +1,5 @@
 # Yelp_Regression_Analysis
-<b> Applied R, statistical models in this project </b>
+<b> Applied R, statistical modeling in the project </b>
 
 ## Data Background
 Yelp allows consumers/customers to provide reviews of major local businesses/restaurants. </br>
