@@ -39,13 +39,11 @@ select(word, afinn_score = score)
 
 AFINN
 
-
 #tidy sentiment analysis, separates good and bad words
 #generate AFINN score on all words, plot and then filter by usage
 #what AFINN separators do we want to choose, -5 to -3, -3 to -1, -1 to 1, 1 to 3, 3 to 5?
 
 #what is the end model supposed to look like, do we want to group things into those categories
-
 
 #take x columns and transform them into new variables
 
@@ -60,7 +58,6 @@ c(sort(names(traindata[,c(-1 : -8)])))
 #How many times the word appears more than once
 
 traindata
-
 
 glm(star ~ city, data = traindata)
 
@@ -85,7 +82,6 @@ functiondata <- traindata
 starprediction <- data.frame(functiondata[1], Expected)
 
 write.csv(starprediction, file = "Project2Group1.csv", row.names = FALSE)
-
 
 starsetup <- data.frame(traindata[,c(-1, -3, -4, -5, -6)])
 
@@ -191,7 +187,6 @@ lowimpnegwords
 
 functiondata <- traindata
 
-
 verynegative <- ((functiondata$horrible + functiondata$manager + functiondata$rude + functiondata$worst) / functiondata$nword)
 verypositive <- ((functiondata$absolutely + functiondata$always + functiondata$amazing + functiondata$atmosphere + functiondata$authentic + functiondata$awesome + functiondata$bakery + functiondata$beautiful + functiondata$best + functiondata$brunch + functiondata$capitol + functiondata$casual + functiondata$chocolate + functiondata$classic + functiondata$cocktail + functiondata$cocktails + functiondata$complaint+ functiondata$cozy+ functiondata$creamy+ functiondata$crispy+ functiondata$cute + functiondata$definitely+ functiondata$delicious + functiondata$desserts+ functiondata$enjoyed + functiondata$excellent + functiondata$fan + functiondata$fantastic+ functiondata$fashioned + functiondata$favorite+ functiondata$favorites + functiondata$flavorful + functiondata$flavors + functiondata$foods + functiondata$fresh+ functiondata$friendly+ functiondata$generous+ functiondata$glad+ functiondata$great + functiondata$hands + functiondata$happy + functiondata$healthy+ functiondata$helpful + functiondata$highly+ functiondata$homemade+ functiondata$incredible+ functiondata$italian + functiondata$knowledgeable + functiondata$lived+ functiondata$local + functiondata$love+ functiondata$loved + functiondata$lovely+ functiondata$madison + functiondata$market+ functiondata$meats+ functiondata$mexican + functiondata$notch + functiondata$outdoor + functiondata$outstanding + functiondata$perfect + functiondata$perfectly + functiondata$pleased+ functiondata$reasonable+ functiondata$reasonably+ functiondata$recommend + functiondata$recommended + functiondata$rich+ functiondata$roasted + functiondata$savory + functiondata$selection + functiondata$shared+ functiondata$solid + functiondata$specials+ functiondata$specialty + functiondata$spicy + functiondata$spot + functiondata$summer+ functiondata$super + functiondata$tasty + functiondata$town + functiondata$traditional + functiondata$truly + functiondata$unique + functiondata$variety + functiondata$vegan + functiondata$vegetarian + functiondata$vibe + functiondata$visiting + functiondata$weekend + functiondata$wine + functiondata$wisconsin + functiondata$wonderful + functiondata$world + functiondata$yum + functiondata$yummy) / functiondata$nword)
 midnegative <- ((functiondata$awful + functiondata$mediocre + functiondata$terrible)/ functiondata$nword)
@@ -204,7 +199,6 @@ lowpositive <- ((functiondata$actually + functiondata$almost + functiondata$alre
 verylownegative <- ((functiondata$another + functiondata$arrived + functiondata$ask + functiondata$asking + functiondata$avoid + functiondata$bad + functiondata$behind + functiondata$clearly + functiondata$cold + functiondata$completely + functiondata$dry + functiondata$empty + functiondata$finally + functiondata$forgot + functiondata$given + functiondata$guess + functiondata$hostess + functiondata$instead + functiondata$issue + functiondata$later + functiondata$left + functiondata$nothing + functiondata$obviously + functiondata$orders + functiondata$pay + functiondata$paying + functiondata$problem + functiondata$said + functiondata$saw + functiondata$saying + functiondata$slow + functiondata$someone + functiondata$took + functiondata$turned + functiondata$understand + functiondata$unfortunately + functiondata$waiting + functiondata$waitress) / functiondata$nword)
 #got rid of else because of formatting issues
 verylowpositive <- ((functiondata$anything + functiondata$attention + functiondata$basically + functiondata$better + functiondata$brought + functiondata$business + functiondata$came + functiondata$chance + functiondata$cost + functiondata$delivery + functiondata$disappointed + functiondata$either + functiondata$entire + functiondata$excited + functiondata$finished + functiondata$floor + functiondata$front + functiondata$frozen + functiondata$gave + functiondata$give + functiondata$giving + functiondata$gone + functiondata$half + functiondata$hope + functiondata$hour + functiondata$kitchen + functiondata$least + functiondata$leave + functiondata$less + functiondata$literally + functiondata$longer + functiondata$looked + functiondata$nearly + functiondata$needs + functiondata$none + functiondata$noticed + functiondata$offered + functiondata$order + functiondata$ordered + functiondata$party + functiondata$piece + functiondata$pieces + functiondata$point + functiondata$put + functiondata$return + functiondata$sad + functiondata$seated + functiondata$second + functiondata$server + functiondata$sitting + functiondata$taken + functiondata$taking + functiondata$talk + functiondata$tasted + functiondata$tip + functiondata$unless + functiondata$used + functiondata$waiter + functiondata$wanted + functiondata$water + functiondata$write + functiondata$wrong)/ functiondata$nword)
-
 
 testdata
 
@@ -246,16 +240,8 @@ v[220,]
 #in order for a word to be significant, its usage in a rating has to be different from the others, 
 #H1 = H2 = H3 = H4 = H5
 
-
-
-
 #now that we can see what the most used words are for each rating, we can try to recognize patterns
 #words that are common in all stars; star, st, us, wi, order
-
-
-
-
-
 
 #######not using right now
 
@@ -263,7 +249,6 @@ v[220,]
 overalluse = read.csv("words and usage project 2.csv") #Read data into R
 attach(overalluse)
 summary(overalluse)
-
 
 v = overalluse$Appear
 w = overalluse$Appear.1
@@ -274,9 +259,6 @@ z = overalluse$Appear.4
 m <- matrix(c(v, w, x, y, z), nrow = 1, ncol = 5, byrow = TRUE)
 m
 barplot(m, beside = TRUE)
-
-
-
 
 averagerating <- (5*v + 4*w + 3*x + 2*y + z) / (v+w+x+y+z)
 averagerating
@@ -297,26 +279,14 @@ adjdataframe
 
 plot(averageratingdataframe$worduse, averageratingdataframe$averagerating)
 
-
 f <- jitter(traindata$incredible, 1)
 starjit <- jitter(traindata$star, .3)
 plot(f, starjit)
 
-
-
-
-
-
-
 #"Positive" words
 #gem, incredible, die 
 
-
 #"Negative" words
-
-
-
-
 
 #find the average star rating of each word'
 
@@ -346,11 +316,6 @@ sum(gemstar4)/length(gemstar4)
 
 lm(traindata$star ~ traindata$gem)
 
-
-
-
-
-
 #Change the value of this to be the prediction
 Expected <- 
 
@@ -358,5 +323,3 @@ Expected <-
 starprediction <- data.frame(traindata[1], Expected)
 
 write.csv(starprediction, file = "Project2Group1.csv", row.names = FALSE)
-
-
